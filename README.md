@@ -1,6 +1,9 @@
 # Redaxo5 Addon Mediasort
 
-benoetigt ein Text-Feld Namens med\_priority.
+Das Addon ermöglicht die Sortierung von Medien in einer Medien-Kategorie. 
+
+- benoetigt ein Text-Feld Namens med\_priority
+- Benötigt ein Modul, das die Bilder nach med\_priority sortiert (noch nicht Teil des Addons)
 
 Screenshots:
 
