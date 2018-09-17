@@ -1,7 +1,7 @@
-.mediasort_category {
+#mediasort_category {
     padding: 15px;
 }
-.mediasort_category li
+#mediasort_category li
 {
     display: inline-block;
     vertical-align: top;
@@ -9,7 +9,7 @@
     height: 100px;
     overflow: hidden;
 }
-.mediasort_category_image img {
+#mediasort_category li img {
     max-width:100%;
 }
 .mediasort_category_image.selected { 

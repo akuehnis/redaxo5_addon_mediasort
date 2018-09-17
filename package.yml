@@ -5,7 +5,7 @@ supportpage: www.redaxo.org/de/forum/
 
 pages:
     mediapool/mediasort:
-        title: 'Media sort'
+        title: 'Media-Sort'
         perm: mediasort[]
         subpages:
           mediasort: { title: translate:mediasort, hidden: true}
