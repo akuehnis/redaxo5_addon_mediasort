@@ -1,0 +1,16 @@
+package: mediasort
+version: 0.1
+author: Adrian Kuehnis aku0112358@gmail.com
+supportpage: www.redaxo.org/de/forum/
+
+pages:
+    mediapool/mediasort:
+        title: 'Media sort'
+        perm: mediasort[]
+        subpages:
+          mediasort: { title: translate:mediasort, hidden: true}
+
+requires:
+    packages:
+        media_manager: '^2.0.0'
+    redaxo: ^5.0

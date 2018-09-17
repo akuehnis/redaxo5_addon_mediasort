@@ -1,0 +1,17 @@
+.mediasort_category {
+    padding: 15px;
+}
+.mediasort_category li
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+.mediasort_category_image img {
+    max-width:100%;
+}
+.mediasort_category_image.selected { 
+    outline: 1px solid red; 
+}
