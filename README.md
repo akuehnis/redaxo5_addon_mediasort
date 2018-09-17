@@ -1,6 +1,6 @@
 # Redaxo5 Addon Mediasort
 
-benoetigt ein Feld Namens med\_priority
+benoetigt ein Text-Feld Namens med\_priority.
 
 Screenshots:
 
