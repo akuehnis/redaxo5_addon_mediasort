@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", function(){
     
     function sortByName(dir){
         $('.mediasort_category_image').detach().sort(function(a,b) {
-             return dir * a.dataset.originalname.localeCompare(b.dataset.originalname);
+            if (a.dataset.originalname.length == b.dataset.originalname.length) {
+                return dir * a.dataset.originalname.localeCompare(b.dataset.originalname);
+            } else {
+                return dir * (a.dataset.originalname.length - b.dataset.originalname.length)
+            }
         }).appendTo($('#mediasort_category'));
         submitNewSorting();
         $( "#mediasort_category" ).multisortable({
