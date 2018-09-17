@@ -4,4 +4,4 @@ benoetigt ein Text-Feld Namens med\_priority.
 
 Screenshots:
 
-https://github.com/akuehnis/redaxo5_addon_mediasort/issues/2
+![Drag and drop to sort](/assetsmediasort_drag_drop.png?raw=true "Sort images by Drag & Drop")
