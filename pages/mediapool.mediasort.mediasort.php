@@ -30,6 +30,7 @@ if ($has_priofield){
         $qry .= ' WHERE category_id=' . $rex_file_category;
         $qry .= " ORDER BY FIND_IN_SET (id, '".implode(',',$sort)."')";
         $sql->setQuery($qry);
+        echo $qry;
     }
 }
 
@@ -72,7 +73,7 @@ $toolbar = '
 $files = !$has_priofield ? [] : rex_sql::factory()
     ->setQuery("SELECT * FROM `".rex::getTable('media')."`
     WHERE category_id=$rex_file_category 
-    ORDER BY med_priority ASC")
+    ORDER BY LENGTH(med_priority), med_priority")
     ->getArray();
 ob_start();
 ?>
