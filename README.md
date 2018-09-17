@@ -2,7 +2,7 @@
 
 Das Addon ermöglicht die Sortierung von Medien in einer Medien-Kategorie. 
 
-- benoetigt ein Text-Feld Namens med\_priority
+- benoetigt ein Meta-Feld Namens med\_priority, Typ text
 - Benötigt ein Modul, das die Bilder nach med\_priority sortiert (noch nicht Teil des Addons)
 
 Beispielmodul
