@@ -12,6 +12,7 @@
 #mediasort_category li.placeholder
 {
     height: 100px !important;
+    background-color: #aaa;
 }
 #mediasort_category li img {
     max-width:100%;

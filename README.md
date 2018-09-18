@@ -2,10 +2,7 @@
 
 Das Addon ermöglicht die Sortierung von Medien in einer Medien-Kategorie. 
 
-- benoetigt ein Meta-Feld Namens med\_priority, Typ text
-- Benötigt ein Modul, das die Bilder nach med\_priority sortiert (noch nicht Teil des Addons)
-
-Beispielmodul
+Um die sortierten Dateien anzueigen, kann man das folgende Modul als Beispiel verwenden.
 
 Eingabe
 ```
@@ -32,7 +29,7 @@ $files = rex_sql::factory()
     FROM `".rex::getTable('media')."`
     WHERE category_id=".intval("REX_VALUE[1]")."
     AND filetype IN ('image/jpeg', 'image/png', 'image/gif')
-    ORDER BY LENGTH(med_priority), med_priority")
+    ORDER BY priority")
     ->getArray();
 
 $files = array_map(function($row){

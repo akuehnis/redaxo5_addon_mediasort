@@ -9,29 +9,22 @@
 $addon = rex_addon::get('mediasort');
 $media_manager = rex_addon::get('media_manager');
 
-$has_priofield = (bool) count(rex_sql::factory()
-    ->setTable(rex::getTable('metainfo_field'))
-    ->setWhere(['name'=>'med_priority'])
-    ->select("*")
-    ->getArray());
+// Verarbeitung
+$sort = isset($_POST['sort']) ? $_POST['sort'] : null;
+if (is_array($sort)){
+    // Datenbankvariable initialisieren
+    $qry = 'SET @count=0';
+    $sql = rex_sql::factory();
+    $sql->setQuery($qry);
 
-if ($has_priofield){
-    $sort = isset($_POST['sort']) ? $_POST['sort'] : null;
-    if (is_array($sort)){
-        // Datenbankvariable initialisieren
-        $qry = 'SET @count=0';
-        $sql = rex_sql::factory();
-        $sql->setQuery($qry);
-
-        // Spalte updaten
-        $tableName = rex::getTable('media');
-        $priorColumnName = 'med_priority';
-        $qry = 'UPDATE ' . $tableName . ' SET ' . $priorColumnName . ' = ( SELECT @count := @count +1 )';
-        $qry .= ' WHERE category_id=' . $rex_file_category;
-        $qry .= " ORDER BY FIND_IN_SET (id, '".implode(',',$sort)."')";
-        $sql->setQuery($qry);
-        echo $qry;
-    }
+    // Spalte updaten
+    $tableName = rex::getTable('media');
+    $priorColumnName = 'priority';
+    $qry = 'UPDATE ' . $tableName . ' SET ' . $priorColumnName . ' = ( SELECT @count := @count +1 )';
+    $qry .= ' WHERE category_id=' . $rex_file_category;
+    $qry .= " ORDER BY FIND_IN_SET (id, '".implode(',',$sort)."')";
+    $sql->setQuery($qry);
+    echo $qry;
 }
 
 // ***** kategorie auswahl
@@ -70,10 +63,10 @@ $toolbar = '
 </form>
 </div>';
 
-$files = !$has_priofield ? [] : rex_sql::factory()
+$files = rex_sql::factory()
     ->setQuery("SELECT * FROM `".rex::getTable('media')."`
     WHERE category_id=$rex_file_category 
-    ORDER BY LENGTH(med_priority), med_priority")
+    ORDER BY priority")
     ->getArray();
 ob_start();
 ?>
@@ -108,11 +101,6 @@ ob_start();
 <?php endforeach; ?>
 </ul>
 <?php $panel = ob_get_clean();
-if (!$has_priofield){
-    $panel = '<div class="alert alert-danger">'.
-        'Media-Metafeld mit dem Namen &quot;med_priority&quot; ist erforderlich'.
-        '</div>';
-}
 
 $fragment = new rex_fragment();
 $fragment->setVar('title', rex_i18n::msg('pool_file_caption', $rex_file_category_name), false);
