@@ -9,6 +9,10 @@
     height: 100px;
     overflow: hidden;
 }
+#mediasort_category li.placeholder
+{
+    height: 100px !important;
+}
 #mediasort_category li img {
     max-width:100%;
 }
